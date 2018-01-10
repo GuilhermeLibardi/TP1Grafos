@@ -18,9 +18,10 @@ public class Main {
             
             Info info = new Info(grafo);
             info.listaAdj(grafo);
+            info.sucessores(4);
 
         } catch (IOException e) {
-
+            System.out.println(e.getMessage());
         }
 
     }
