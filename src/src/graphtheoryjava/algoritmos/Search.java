@@ -44,7 +44,7 @@ public class Search {
         while (!fila.isEmpty()) {
             int u = fila.remove(0);
             for (int i = 0; i < grafo.adjList.get(u).size(); i++) {
-                int v = grafo.adjList.get(u).get(i).sink;
+                int v = grafo.adjList.get(u).get(i).peso;
                 if (this.visitado[v] == 0) {
                     this.visitado[v] = 1;
                     this.ordem.add(v);
@@ -61,7 +61,7 @@ public class Search {
         this.ordem.add(s);
         
         for (int i = 0; i < grafo.adjList.get(s).size(); i++) {
-            int v = grafo.adjList.get(s).get(i).sink;
+            int v = grafo.adjList.get(s).get(i).peso;
             if (this.visitado[v] == 0) {
                 this.buscaProfundidade(v);
             }
