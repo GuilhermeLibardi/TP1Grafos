@@ -17,8 +17,8 @@ public class Main {
             Grafo grafo = leitura.lerArquivo("graph.txt");
             
             Info info = new Info(grafo);
-            info.listaAdj(grafo);
-            info.sucessores(4);
+            info.listaAdj();
+            info.grauEntrada(0);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
