@@ -18,8 +18,8 @@ public class Main {
             
             Info info = new Info(grafo);
             info.listaAdj();
-            info.grauEntrada(0);
-
+            info.adjacentes(0, 1);
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
