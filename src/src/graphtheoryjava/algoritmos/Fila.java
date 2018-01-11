@@ -10,7 +10,7 @@ public class Fila {
         this.objs.add(object);
     }
     
-    public Object Desenfilera(Object object){
+    public Object Desenfilera(){
         return this.objs.remove(0);
     }
     

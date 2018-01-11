@@ -10,7 +10,7 @@ public class Pilha {
         this.objs.add(objeto);
     }
     
-    public Object Desempilha(Object objeto){
+    public Object Desempilha(){
         return this.objs.remove(this.objs.size() - 1);
     }
     
