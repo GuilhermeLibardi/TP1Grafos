@@ -16,35 +16,29 @@ public class Info {
         return this.grafo.vertices.size();
     }
 
-    public void adjacente(Arco a) { // Item 3
-        System.out.println("Arestas adjacentes a aresta " + a.origem + a.destino + ": ");
-        for (int j = 0; j < grafo.adjList.get(a.origem).size(); j++) {
-            if (a.destino != grafo.adjList.get(a.origem).get(j).destino) {
-                System.out.print("" + a.origem + grafo.adjList.get(a.origem).get(j).destino + " ");
+    public ArrayList<Arco> adjacente(Arco a) { // Item 3
+        ArrayList<Arco> retorno = new ArrayList<>(0);
+        ArrayList<Arco> aux1 = new ArrayList<>(0);
+        ArrayList<Arco> aux2 = new ArrayList<>(0);
+
+        aux1 = incidentes_vertice(a.origem);
+        aux2 = incidentes_vertice(a.destino);
+
+        for (int i = 0; i < aux1.size(); i++) {
+            if ((a.destino != aux1.get(i).destino)) {
+                retorno.add(aux1.get(i));
             }
         }
-        for (int j = 0; j < grafo.vertices.size(); j++) {
-            for (int k = 0; k < grafo.adjList.get(j).size(); k++) {
-                if (grafo.adjList.get(j).get(k).destino == a.origem) {
-                    System.out.print("" + grafo.adjList.get(j).get(k).origem + a.origem + " ");
+
+        for (int i = 0; i < aux2.size(); i++) {
+            if ((a.origem != aux2.get(i).origem)) {
+                if ((a.origem != aux2.get(i).destino)) {
+                    retorno.add(aux2.get(i));
                 }
             }
         }
-        for (int j = 0; j < grafo.adjList.get(a.destino).size(); j++) {
-            if (a.origem != grafo.adjList.get(a.destino).get(j).destino) {
-                System.out.print("" + a.destino + grafo.adjList.get(a.destino).get(j).destino + " ");
-            }
-        }
-        for (int j = 0; j < grafo.vertices.size(); j++) {
-            for (int k = 0; k < grafo.adjList.get(j).size(); k++) {
-                if (grafo.adjList.get(j).get(k).destino == a.destino) {
-                    if (grafo.adjList.get(j).get(k).origem != a.origem) {
-                        System.out.print("" + grafo.adjList.get(j).get(k).origem + a.destino + " ");
-                    }
-                }
-            }
-        }
-        System.out.println();
+
+        return retorno;
     }
 
     public ArrayList<Integer> sucessores(int v) { // Item 4
@@ -67,23 +61,28 @@ public class Info {
         return retorno;
     }
 
-    public void incidentes_vertice(int i) { // Item 6
-        System.out.println("As arestas incidentes ao vertice " + i + " são: ");
+    public ArrayList<Arco> incidentes_vertice(int i) { // Item 6
+        ArrayList<Arco> retorno = new ArrayList(0);
+
         for (int j = 0; j < grafo.adjList.get(i).size(); j++) {
-            System.out.print("" + i + grafo.adjList.get(i).get(j).destino + " ");
+            retorno.add(grafo.adjList.get(i).get(j));
         }
+
         for (int j = 0; j < grafo.vertices.size(); j++) {
             for (int k = 0; k < grafo.adjList.get(j).size(); k++) {
                 if (grafo.adjList.get(j).get(k).destino == i) {
-                    System.out.print("" + grafo.adjList.get(j).get(k).origem + i + " ");
+                    retorno.add(grafo.adjList.get(j).get(k));
                 }
             }
         }
-        System.out.println();
+        return retorno;
     }
 
-    public void incidentes_aresta(Arco a) { //Item 7
-        System.out.println("Os vértices incidentes a aresta " + a.origem + a.destino + " são: " + a.origem + " " + a.destino);
+    public ArrayList<Integer> incidentes_aresta(Arco a) { //Item 7
+        ArrayList<Integer> retorno = new ArrayList<>(0);
+        retorno.add(a.origem);
+        retorno.add(a.destino);
+        return retorno;
     }
 
     public int grauEntrada(int v) { // Item 8
