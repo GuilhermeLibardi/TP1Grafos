@@ -14,6 +14,30 @@ public class Info {
     public int ordem() { // Item 2
         return this.grafo.vertices.size();
     }
+    
+    public void adjacente(Arco a) { // Item 3
+        System.out.println("Arestas adjacentes a aresta " + a.origem + a.destino + ": ");
+        for (int j = 0; j < grafo.adjList.get(a.origem).size(); j++) {
+            if(a.destino != grafo.adjList.get(a.origem).get(j).destino)
+                System.out.print("" + a.origem + grafo.adjList.get(a.origem).get(j).destino + " ");
+        }
+        for (int j = 0; j < grafo.vertices.size(); j++) {
+            for (int k = 0; k < grafo.adjList.get(j).size(); k++)
+                if(grafo.adjList.get(j).get(k).destino == a.origem)
+                        System.out.print("" + grafo.adjList.get(j).get(k).origem + a.origem + " ");
+        }
+        for (int j = 0; j < grafo.adjList.get(a.destino).size(); j++) {
+            if(a.origem != grafo.adjList.get(a.destino).get(j).destino)
+                System.out.print("" + a.destino + grafo.adjList.get(a.destino).get(j).destino + " ");
+        }
+        for (int j = 0; j < grafo.vertices.size(); j++) {
+            for (int k = 0; k < grafo.adjList.get(j).size(); k++)
+                if(grafo.adjList.get(j).get(k).destino == a.destino)
+                    if(grafo.adjList.get(j).get(k).origem != a.origem)
+                        System.out.print("" + grafo.adjList.get(j).get(k).origem + a.destino + " ");
+        }
+        System.out.println();
+    }
 
     public void sucessores(int v) { // Item 4
         System.out.print("Vértices adjacentes (sucessores) de " + v + " -> ");

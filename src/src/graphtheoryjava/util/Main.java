@@ -5,6 +5,7 @@ import src.graphtheoryjava.util.Grafo;
 import java.io.IOException;
 import java.util.Scanner;
 import src.graphtheoryjava.algoritmos.Info;
+import src.graphtheoryjava.algoritmos.Search;
 
 public class Main {
 
@@ -16,9 +17,8 @@ public class Main {
 
             Grafo grafo = leitura.lerArquivo("graph.txt");
             
-            Info info = new Info(grafo);
-            info.listaAdj();
-            info.adjacentes(0, 1);
+            Search search = new Search(grafo);
+            search.buscaProfundidade(0);
             
         } catch (IOException e) {
             System.out.println(e.getMessage());
