@@ -57,6 +57,7 @@ public class Search {
     
     public ArrayList<Integer> buscaProfundidade(int s)
     {
+        this.reset();
         this.visitado[s] = 1;
         this.ordem.add(s);
         
