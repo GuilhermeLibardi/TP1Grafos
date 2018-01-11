@@ -83,13 +83,12 @@ public class Search {
         return this.ordem;
     }
 
-    public ArrayList<Integer> BuscaProfRecursiva(int s) {
+    public ArrayList<Integer> BuscaProfRecursiva() {
         this.reset();
-        ArrayList<Integer> retorno = new ArrayList<>(0);
+        ArrayList<Integer> retorno = new ArrayList<>();
         for (int i : this.grafo.vertices) {
             if (this.visitado[i] == 0) {
-                PROF(i);
-                retorno.add(i);
+                PROF(i, retorno);
             }
         }
         return retorno;
@@ -99,7 +98,7 @@ public class Search {
         this.reset();
         int componente = 0;
 
-        for (int i : this.visitado) {
+        for (int i : this.grafo.vertices) {
             if (visitado[i] == 0) {
                 componente++;
                 this.PROF_CON(i, componente);
@@ -142,13 +141,14 @@ public class Search {
         }
     }
 
-    private void PROF(int u) {
+    private void PROF(int u, ArrayList<Integer> retorno) {
         Info info = new Info(this.grafo);
 
         this.visitado[u] = 1;
+        retorno.add(u);
         for (int v : info.sucessores(u)) {
             if (visitado[v] == 0) {
-                PROF(v);
+                PROF(v, retorno);
             }
         }
     }
