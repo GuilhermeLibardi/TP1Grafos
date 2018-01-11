@@ -15,7 +15,7 @@ public class Search {
         this.visitado = new int[grafo.vertices.size()];
     }
 
-    public ArrayList<Integer> BuscaLargura(int s) {
+    public ArrayList<Integer> BuscaLargura(int s) { // Item 11
         Fila fila = new Fila();
         Info info = new Info(this.grafo);
         ArrayList<Integer> retorno = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Search {
         return retorno;
     }
 
-    public ArrayList<Integer> BuscaProfundidade(int s) {
+    public ArrayList<Integer> BuscaProfundidade(int s) { // Item 12
         Pilha pilha = new Pilha();
         Info info = new Info(this.grafo);
         int u, i = 0;
@@ -72,7 +72,7 @@ public class Search {
         return this.ordem;
     }
 
-    public ArrayList<Integer> BuscaProfRecursiva() {
+    public ArrayList<Integer> BuscaProfRecursiva() { // Item 13
         this.reset();
         ArrayList<Integer> retorno = new ArrayList<>();
         for (int i : this.grafo.vertices) {
@@ -83,7 +83,7 @@ public class Search {
         return retorno;
     }
 
-    public int ComponentesConexas() {
+    public int ComponentesConexas() { // Item 14
         this.reset();
         int componente = 0;
 
@@ -97,7 +97,7 @@ public class Search {
         return componente;
     }
 
-    public ArrayList<Integer> OrdenacaoTopologica() {
+    public ArrayList<Integer> OrdenacaoTopologica() { // Item 15
         ArrayList<Integer> retorno = new ArrayList<>(0);
         this.reset();
 

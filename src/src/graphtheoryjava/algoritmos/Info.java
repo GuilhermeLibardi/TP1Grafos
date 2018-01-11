@@ -15,27 +15,34 @@ public class Info {
     public int ordem() { // Item 2
         return this.grafo.vertices.size();
     }
-    
+
     public void adjacente(Arco a) { // Item 3
         System.out.println("Arestas adjacentes a aresta " + a.origem + a.destino + ": ");
         for (int j = 0; j < grafo.adjList.get(a.origem).size(); j++) {
-            if(a.destino != grafo.adjList.get(a.origem).get(j).destino)
+            if (a.destino != grafo.adjList.get(a.origem).get(j).destino) {
                 System.out.print("" + a.origem + grafo.adjList.get(a.origem).get(j).destino + " ");
+            }
         }
         for (int j = 0; j < grafo.vertices.size(); j++) {
-            for (int k = 0; k < grafo.adjList.get(j).size(); k++)
-                if(grafo.adjList.get(j).get(k).destino == a.origem)
-                        System.out.print("" + grafo.adjList.get(j).get(k).origem + a.origem + " ");
+            for (int k = 0; k < grafo.adjList.get(j).size(); k++) {
+                if (grafo.adjList.get(j).get(k).destino == a.origem) {
+                    System.out.print("" + grafo.adjList.get(j).get(k).origem + a.origem + " ");
+                }
+            }
         }
         for (int j = 0; j < grafo.adjList.get(a.destino).size(); j++) {
-            if(a.origem != grafo.adjList.get(a.destino).get(j).destino)
+            if (a.origem != grafo.adjList.get(a.destino).get(j).destino) {
                 System.out.print("" + a.destino + grafo.adjList.get(a.destino).get(j).destino + " ");
+            }
         }
         for (int j = 0; j < grafo.vertices.size(); j++) {
-            for (int k = 0; k < grafo.adjList.get(j).size(); k++)
-                if(grafo.adjList.get(j).get(k).destino == a.destino)
-                    if(grafo.adjList.get(j).get(k).origem != a.origem)
+            for (int k = 0; k < grafo.adjList.get(j).size(); k++) {
+                if (grafo.adjList.get(j).get(k).destino == a.destino) {
+                    if (grafo.adjList.get(j).get(k).origem != a.origem) {
                         System.out.print("" + grafo.adjList.get(j).get(k).origem + a.destino + " ");
+                    }
+                }
+            }
         }
         System.out.println();
     }
@@ -91,8 +98,8 @@ public class Info {
         return n;
     }
 
-    public void grauSaida(int v) { //Item 9
-        System.out.println("Grau de entrada do vértice " + v + ": " + this.grafo.adjList.get(v).size());
+    public int grauSaida(int v) { //Item 9
+        return this.grafo.adjList.get(v).size();
     }
 
     public boolean adjacentes(int v1, int v2) { //Item 10
@@ -111,7 +118,7 @@ public class Info {
         return flag;
     }
 
-    public void listaAdj() { // Não tem item pra isso aqui não haueaeh
+    public void listaAdj() {
         for (int i = 0; i < this.grafo.adjList.size(); i++) {
             System.out.print(i + "->");
             for (int j = 0; j < this.grafo.adjList.get(i).size(); j++) {
@@ -119,6 +126,16 @@ public class Info {
             }
             System.out.println();
         }
+    }
+
+    public void matrizAdj() {
+        for (int i = 0; i < this.grafo.vertices.size(); i++) {
+            for (int j = 0; j < this.grafo.vertices.size(); j++) {
+                System.out.print(this.grafo.adjMatrix[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println();
     }
 
 }

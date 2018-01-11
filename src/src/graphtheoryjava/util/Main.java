@@ -7,24 +7,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import src.graphtheoryjava.algoritmos.Info;
 import src.graphtheoryjava.algoritmos.Search;
+import src.graphtheoryjava.caminhominimo.CaminhoMinimo;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
 
-            System.out.println("Graph File:");
             Leitura leitura = new Leitura();
+            Grafo grafo = leitura.lerArquivo("toy.txt");
 
-            Grafo grafo = leitura.lerArquivo("graph.txt");
-            
+            Info info = new Info(grafo);
             Search search = new Search(grafo);
-            ArrayList<Integer> busca = search.buscaProfundidade(0);
-            System.out.println("Ordem: ");
-            for(int a : busca){
-                System.out.print(a + " ");
-            }
+            CaminhoMinimo cm = new CaminhoMinimo(grafo);
             
+            ArrayList<Integer> caminho = cm.Dijkstra(0, 4);
+            
+            for(int i: caminho){
+                System.out.println(i + " ");
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
