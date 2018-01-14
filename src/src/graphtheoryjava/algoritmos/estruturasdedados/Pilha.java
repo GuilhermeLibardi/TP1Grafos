@@ -1,4 +1,4 @@
-package src.graphtheoryjava.algoritmos;
+package src.graphtheoryjava.algoritmos.estruturasdedados;
 
 import java.util.LinkedList;
 import java.util.List;

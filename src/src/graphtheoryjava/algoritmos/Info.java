@@ -89,7 +89,7 @@ public class Info {
         int n = 0;
         for (int i = 0; i < this.grafo.adjList.size(); i++) {
             for (int j = 0; j < this.grafo.adjList.get(i).size(); j++) {
-                if (this.grafo.adjList.get(i).get(j).origem == v) {
+                if (this.grafo.adjList.get(i).get(j).destino == v) {
                     n++;
                 }
             }
