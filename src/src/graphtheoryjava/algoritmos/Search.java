@@ -1,6 +1,6 @@
 package src.graphtheoryjava.algoritmos;
 
-import src.graphtheoryjava.caminhominimo.Fila;
+import src.graphtheoryjava.algoritmos.estruturasdedados.Fila;
 import src.graphtheoryjava.util.Grafo;
 import src.graphtheoryjava.algoritmos.estruturasdedados.Pilha;
 import java.util.ArrayList;
